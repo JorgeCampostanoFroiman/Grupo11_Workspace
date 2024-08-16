@@ -13,11 +13,24 @@ public class Empleado {
 	public Empleado() 
 	{
 		contador_Empleados++;
-		
 		id = contador_Empleados;
+		nombre="Sin nombre";
+		edad=99;
+		
 		
 		
 	}
+	
+	public Empleado(String nombre, int edad) 
+	{
+		contador_Empleados++;
+		id = contador_Empleados;
+		this.edad=edad;
+		this.nombre=nombre;
+		
+		
+	}
+	
 
 	//GETTERS & SETTERS
 	public String getNombre() {
