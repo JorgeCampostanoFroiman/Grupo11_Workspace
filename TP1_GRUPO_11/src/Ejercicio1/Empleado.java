@@ -39,6 +39,10 @@ public class Empleado {
 	public int getId() {
 		return id;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Empleado " + getNombre() + ", edad: " + getEdad() + ", legajo: " + getId();
+	}
 	
 }
