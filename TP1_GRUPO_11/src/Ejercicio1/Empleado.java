@@ -12,23 +12,22 @@ public class Empleado {
 	
 	public Empleado() 
 	{
-		contador_Empleados++;
-		id = contador_Empleados;
+		//contador_Empleados++;
+		//id = contador_Empleados;
+		
+		this.id = contador_Empleados++;
 		nombre="Sin nombre";
 		edad=99;
-		
-		
-		
 	}
 	
 	public Empleado(String nombre, int edad) 
 	{
-		contador_Empleados++;
-		id = contador_Empleados;
+		//contador_Empleados++;
+		//id = contador_Empleados;
+		
+		this.id = contador_Empleados++;
 		this.edad=edad;
 		this.nombre=nombre;
-		
-		
 	}
 	
 
@@ -52,6 +51,12 @@ public class Empleado {
 	public int getId() {
 		return id;
 	}
+	
+	
+	// Método estático para devolver el próximo ID
+    public static int devuelveProximoID() {
+        return contador_Empleados;
+    }
 
 	@Override
 	public String toString() {
