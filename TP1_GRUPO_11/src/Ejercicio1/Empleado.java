@@ -8,7 +8,7 @@ public class Empleado {
 	
 	private int edad;
 	
-	private static int contador_Empleados = 999;
+	private static int contador_Empleados = 1000;
 	
 	public Empleado() 
 	{
