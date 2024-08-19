@@ -16,6 +16,10 @@ public class Principal {
 		
 		System.out.println(empleado3.toString());
 		
+		System.out.println(empleado4.toString());
+		
+		System.out.println(empleado5.toString());
+
 		// Mostrar el próximo ID que será generado
         System.out.println("El próximo ID será el " + Empleado.devuelveProximoID());
 	}
