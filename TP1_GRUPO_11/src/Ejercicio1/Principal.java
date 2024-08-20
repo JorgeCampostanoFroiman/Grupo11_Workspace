@@ -22,6 +22,8 @@ public class Principal {
 
 		// Mostrar el próximo ID que será generado
         System.out.println("El próximo ID será el " + Empleado.devuelveProximoID());
+        
+        
 	}
 
 }
