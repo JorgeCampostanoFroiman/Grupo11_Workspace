@@ -1,13 +1,10 @@
 package Ejercicio1;
 
-public class Profesor extends Empleado {
+public class Profesor extends Empleado implements Comparable<Profesor> {
 	private String cargo;
 	private int antiguedadDocente;
 	
-	
 	// Constructores
-	
-	
 	public Profesor() {
 		super();
 		this.cargo = "sin cargo";
@@ -22,7 +19,6 @@ public class Profesor extends Empleado {
 	}
 	
 	// Getters and Setters
-
 	public String getCargo() {
 		return cargo;
 	}
@@ -41,10 +37,23 @@ public class Profesor extends Empleado {
 
 	
 	// toString()
-	
 	@Override
 	public String toString() {
 		return "Profesor " + getNombre() + ", Id: " + getId() + ", edad: " +getEdad() + ", cargo: " + getCargo() + ", antiguedad: " + getAntiguedadDocente();
+	}
+
+	@Override
+	public int compareTo(Profesor arg0) {
+		
+		if (arg0.getId() == this.getId()) {
+			return 0;
+		}
+		
+		if (arg0.getId() < this.getId()) {
+			return 1;
+		}
+	
+		return -1;		
 	}
 	
 	

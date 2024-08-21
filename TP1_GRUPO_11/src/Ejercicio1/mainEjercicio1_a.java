@@ -23,8 +23,6 @@ public class mainEjercicio1_a {
         	it.remove();
         	System.out.println(profe.toString());
         }
-		
-		
 	}
 
 }
