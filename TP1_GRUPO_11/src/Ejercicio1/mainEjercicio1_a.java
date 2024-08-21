@@ -20,7 +20,6 @@ public class mainEjercicio1_a {
         ListIterator<Profesor> it = listaProfesores.listIterator();
         while(it.hasNext()) {
         	Profesor profe = it.next();
-        	it.remove();
         	System.out.println(profe.toString());
         }
 	}
