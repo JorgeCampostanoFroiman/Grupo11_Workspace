@@ -23,7 +23,18 @@ public class Principal {
 		// Mostrar el próximo ID que será generado
         System.out.println("El próximo ID será el " + Empleado.devuelveProximoID());
         
+        //Punto 7 creacion de objetos profesor que commpara similitud y arrojan respuesta en caso de true 
         
+        Profesor prof1 = new Profesor("Martin","Profesor",45,10);
+        Profesor prof2 = new Profesor("Martin","Profesor",45,10);
+        
+        if (prof1.equals(prof2))
+        {
+        	System.out.println("Es el mismo profesor");
+        }else
+        {
+        	System.out.println("No es el mismo profesor");
+        }
 	}
 
 }
