@@ -19,8 +19,10 @@ public class mainEjercicio1_a {
 		
         ListIterator<Profesor> it = listaProfesores.listIterator();
         while(it.hasNext()) {
-        	Profesor profe = it.next();
-        	System.out.println(profe.toString());
+        	//Profesor profe = it.next();
+        	//System.out.println(profe.toString());
+        	
+        	System.out.println(it.next());
         }
 	}
 

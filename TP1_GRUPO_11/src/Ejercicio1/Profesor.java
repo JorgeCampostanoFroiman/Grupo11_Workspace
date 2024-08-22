@@ -1,5 +1,7 @@
 package Ejercicio1;
 
+import java.util.Objects;
+
 public class Profesor extends Empleado implements Comparable<Profesor> {
 	private String cargo;
 	private int antiguedadDocente;
@@ -56,12 +58,13 @@ public class Profesor extends Empleado implements Comparable<Profesor> {
 		return -1;		
 	}
 
-	@Override
+	/*@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + antiguedadDocente;
-		result = prime * result + ((cargo == null) ? 0 : cargo.hashCode());
+		int result = 1;
+		result = prime * result + edad;
+		result = prime * result + id;
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		return result;
 	}
 
@@ -69,22 +72,34 @@ public class Profesor extends Empleado implements Comparable<Profesor> {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Profesor other = (Profesor) obj;
-		if (antiguedadDocente != other.antiguedadDocente)
+		Empleado other = (Empleado) obj;
+		if (edad != other.edad)
 			return false;
-		if (cargo == null) {
-			if (other.cargo != null)
+		if (nombre == null) {
+			if (other.nombre != null)
 				return false;
-		} else if (!cargo.equals(other.cargo))
+		} else if (!nombre.equals(other.nombre))
 			return false;
 		return true;
-	}
+	}*/
 	
-	
-	
-	
+    @Override
+    public boolean equals(Object self) {
+        if (this == self) return true;
+        if (self == null || getClass() != self.getClass()) return false;
+        Profesor profesor = (Profesor) self;
+        return antiguedadDocente == profesor.antiguedadDocente &&
+               Objects.equals(getNombre(), profesor.getNombre()) &&
+               getEdad() == profesor.getEdad() &&
+               Objects.equals(cargo, profesor.cargo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getNombre(), getEdad(), cargo, antiguedadDocente);
+    }
 }
