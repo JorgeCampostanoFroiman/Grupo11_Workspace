@@ -1,6 +1,6 @@
 package Ejercicio2;
 
-public class ProductoFresco extends Producto{
+public final class ProductoFresco extends Producto{
 	String fechaEnvasado;
 	String paisOrigen;
 	
