@@ -8,7 +8,7 @@ public final class ProductoFresco extends Producto{
 	public ProductoFresco(){
 		super();
 	}
-	public ProductoFresco(String fechaEnvasado, String paisOrigen, String fechaCaducidad, int numeroLote){
+	public ProductoFresco(String fechaCaducidad, int numeroLote, String fechaEnvasado, String paisOrigen){
 		super(fechaCaducidad,numeroLote);
 		this.fechaEnvasado = fechaEnvasado;
 		this.paisOrigen = paisOrigen;
@@ -30,7 +30,15 @@ public final class ProductoFresco extends Producto{
 	}
 	
 	
-	//ToString
+    @Override
+    public void mostrarInformacion() {
+    	System.out.println("Producto Fresco");
+        super.mostrarInformacion();
+        System.out.println("Fecha de envasado: " + fechaEnvasado);
+        System.out.println("País de origen: " + paisOrigen + "\n");
+    }
+	
+	/*//ToString
 	
 	@Override
 	public String toString() {
@@ -39,6 +47,5 @@ public final class ProductoFresco extends Producto{
 		           "Número de lote: " + super.getNumeroLote() + "\n" +
 		           "Fecha de envasado: " + getFechaEnvasado() + "\n" +
 		           "País de origen: " + getPaisOrigen() + "\n";
-	}
-	
+	}*/
 }

@@ -1,13 +1,13 @@
 package Ejercicio2;
 
 public final class ProductoCongelado extends Producto{
-	float tempCongelacion;
+	private float tempCongelacion;
 	
 	//Constructor
 	public ProductoCongelado(){
 		super();
 	}
-	public ProductoCongelado(float tempCongelacion, String fechaCaducidad, int numeroLote){
+	public ProductoCongelado(String fechaCaducidad, int numeroLote, float tempCongelacion){
 		super(fechaCaducidad,numeroLote);
 		this.tempCongelacion = tempCongelacion;
 	}
@@ -21,7 +21,14 @@ public final class ProductoCongelado extends Producto{
 		this.tempCongelacion = tempCongelacion;
 	}
 	
-	//ToString
+	@Override
+    public void mostrarInformacion() {
+		System.out.println("Producto Congelado");
+        super.mostrarInformacion();
+        System.out.println("Temperatura recomendada: " + tempCongelacion + "°C" + "\n");
+    }
+	
+	/*//ToString
 	
 	@Override
 	public String toString() {
@@ -29,7 +36,5 @@ public final class ProductoCongelado extends Producto{
 		           "Fecha de caducidad: " + super.getFechaCaducidad() + "\n" +
 		           "Número de lote: " + super.getNumeroLote() + "\n" +
 		           "Temperatura de congelacion: " + gettempCongelacion() + "\n";
-	}
-	
-	
+	}*/
 }

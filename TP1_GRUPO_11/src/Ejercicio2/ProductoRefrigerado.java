@@ -7,7 +7,7 @@ public final class ProductoRefrigerado extends Producto{
 	public ProductoRefrigerado(){
 		super();
 	}
-	public ProductoRefrigerado(int codigoOrganismoSupervisor, String fechaCaducidad, int numeroLote){
+	public ProductoRefrigerado(String fechaCaducidad, int numeroLote, int codigoOrganismoSupervisor){
 		super(fechaCaducidad,numeroLote);
 		this.codigoOrganismoSupervisor = codigoOrganismoSupervisor;
 	}
@@ -21,7 +21,15 @@ public final class ProductoRefrigerado extends Producto{
 		this.codigoOrganismoSupervisor = codigoOrganismoSupervisor;
 	}
 	
-	//ToString
+	
+    @Override
+    public void mostrarInformacion() {
+    	System.out.println("Producto Refrigerado");
+        super.mostrarInformacion();
+        System.out.println("Código del organismo de supervisión: " + codigoOrganismoSupervisor + "\n");
+    }
+	
+	/*//ToString
 	
 	@Override
 	public String toString() {
@@ -29,7 +37,5 @@ public final class ProductoRefrigerado extends Producto{
 		           "Fecha de caducidad: " + super.getFechaCaducidad() + "\n" +
 		           "Número de lote: " + super.getNumeroLote() + "\n" +
 		           "Codigo Organismo alimentario Supervisor: " + getCodigoOrganismoSupervisor() + "\n";
-	}
-	
-	
+	}*/
 }
