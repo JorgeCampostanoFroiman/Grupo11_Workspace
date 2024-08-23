@@ -23,6 +23,15 @@ public class Principal {
 		// Mostrar el próximo ID que será generado
         System.out.println("El próximo ID será el " + Empleado.devuelveProximoID());
         
+        // ejercicio1_a
+        System.out.println("");
+        System.out.println("Ejercicio 1A");
+        mainEjercicio1_a.main(args);
+        System.out.println("");
+        System.out.println("Ejercico 1B");
+        // ejercicio1_b
+         mainEjercicio1_b.main(args);
+          
         /*
         //Punto 7 creacion de objetos profesor que commpara similitud y arrojan respuesta en caso de true 
         
