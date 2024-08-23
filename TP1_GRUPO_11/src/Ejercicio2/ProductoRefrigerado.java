@@ -1,6 +1,6 @@
 package Ejercicio2;
 
-public class ProductoRefrigerado extends Producto{
+public final class ProductoRefrigerado extends Producto{
 	int codigoOrganismoSupervisor;
 	
 	//Constructor

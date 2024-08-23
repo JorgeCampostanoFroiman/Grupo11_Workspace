@@ -1,6 +1,6 @@
 package Ejercicio2;
 
-public class ProductoCongelado extends Producto{
+public final class ProductoCongelado extends Producto{
 	float tempCongelacion;
 	
 	//Constructor
