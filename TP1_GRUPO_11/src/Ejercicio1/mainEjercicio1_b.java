@@ -22,7 +22,8 @@ public class mainEjercicio1_b {
 		
 		while(iterador.hasNext())
 		{
-			System.out.println(iterador.next());
+			Profesor p = (Profesor) iterador.next();
+			System.out.println(p.toString());
 		}
 		
 		

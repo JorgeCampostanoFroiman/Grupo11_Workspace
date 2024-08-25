@@ -1,6 +1,6 @@
 package Ejercicio3;
 
-public interface ITipoInstalacion {
+public interface IInstalacionDepotiva {
 	
 	//Metodos Abstractor
 	public abstract void getTipoDeInstalacion();
