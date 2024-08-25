@@ -22,8 +22,8 @@ public class mainEjercicio3 {
 		
 		while(iterador.hasNext())
 		{
-			IEdificio aux = (IEdificio) iterador.next();
-			System.out.println(aux.toString());
+			//IEdificio aux = (IEdificio) iterador.next();
+			System.out.println(iterador.next().toString());
 		}
 	}
 
