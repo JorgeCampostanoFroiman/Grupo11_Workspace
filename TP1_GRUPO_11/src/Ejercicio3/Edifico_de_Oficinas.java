@@ -34,7 +34,7 @@ public class Edifico_de_Oficinas implements IEdificio{
 
 	@Override
 	public String toString() {
-		return "El edificio cuenta con " + getCantidad_De_Oficinas() + " de oficinas";
+		return "El edificio cuenta con " + getCantidad_De_Oficinas() + " oficinas";
 	}
 
 }

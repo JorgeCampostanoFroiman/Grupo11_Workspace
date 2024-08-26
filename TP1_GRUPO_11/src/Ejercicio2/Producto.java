@@ -6,7 +6,7 @@ public class Producto {
 	
 	//Constructor
     public Producto() {
-        this.fechaCaducidad = "Si fecha";
+        this.fechaCaducidad = "Sin fecha";
         this.numeroLote = -1;
     }
 	
