@@ -6,6 +6,8 @@ public class Persona {
 	private String apellido;
 	private int dni;
 	
+	
+	
 	//getters and setters
 	public String getNombre() {
 		return nombre;
