@@ -1,11 +1,16 @@
 package ejercicio1;
 
-public class DniInvalido extends Exception {
+import java.io.IOException;
 
-	public DniInvalido(){}
+public class DniInvalido extends IOException {
 
-	@Override
+	public DniInvalido(String mensaje){
+		super(mensaje);
+	}
+
+	/*@Override
 	public String getMessage() {
 		return "Error DNI. Tiene Letras";
-	}
+	}*/
 }
+
