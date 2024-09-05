@@ -38,15 +38,22 @@ public class Archivo {
                     String apellido = datos[1].trim();
                     String dniStr = datos[2].trim();
 
-                    try {
-                    	//Aca tendriamos que verificar el dni y cargar el objeto
-                    } catch () {
-                    	//Aca se tendria que mostrar el mensaje del validor.
-                    	//Quiza esta de mas
-                    } catch () {
-                    	//Aca podriamos tirar un mensaje de error por si intentamos
-                    	//Convertir el dniStr en int y sale mal.
-                    }
+                    
+                    	Persona aux  = new Persona();
+                    	aux.setNombre(nombre);
+                    	aux.setApellido(apellido);
+                    	
+                    	//Si el dni es valido, lo tranformo para seteralo y agrego a la lista
+                    	if (DniValidator.verificarDniInvalido(dniStr)) {
+                    		aux.setDni(Integer.parseInt(dniStr));
+                    		personas.add(aux);
+                    	}
+                    	
+                    	if (personas.isEmpty())
+                    		System.out.println("No se han encontrado personas guardadadas en el archivo");
+                    	
+                    	
+                
                 }
             }
         } catch (IOException e) {
