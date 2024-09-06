@@ -37,16 +37,15 @@ public class Archivo {
 					String nombre = datos[0].trim();
 					String apellido = datos[1].trim();
 					String dniStr = datos[2].trim();
-
-					Persona aux = new Persona();
-					aux.setNombre(nombre);
-					aux.setApellido(apellido);
 					
-					// Si el dni es valido, lo tranformo para seteralo y agrego a la lista
-					if (DniValidator.verificarDniInvalido(dniStr)) {
-						aux.setDni(Integer.parseInt(dniStr));
-						personas.add(aux);
-					}				
+                    try {
+                    	DniValidator.verificarDniInvalido(dniStr);
+                        personas.add(new Persona(nombre, apellido, Integer.parseInt(dniStr)));
+                    } catch (DniInvalido e) {
+                        System.out.println(e.getMessage());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error al convertir el DNI: " + dniStr);
+                    }			
 				}
 			}
 
@@ -60,17 +59,16 @@ public class Archivo {
 		return personas;
 	}
 	
-	public void crearArchivoPersonas(String listaPersonas) {
-		try {
-			FileWriter entrada = new FileWriter("Resultante.txt",true); // no lo sobreescribo.
-			BufferedWriter mibuffer = new BufferedWriter(entrada);
-			mibuffer.write(listaPersonas);
-			mibuffer.close();
-			entrada.close();
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+	// Metodo para crear archivo
+	public void crearArchivoPersonas(Set<Persona> personas) {
+        try (BufferedWriter buffer = new BufferedWriter(new FileWriter("Resultante.txt"))) {
+            for (Persona persona : personas) {
+            	buffer.write(persona.getNombre() + "-" + persona.getApellido() + "-" + persona.getDni());
+            	buffer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 		
 	}
 
