@@ -61,7 +61,7 @@ public class Archivo {
 	
 	// Metodo para crear archivo
 	public void crearArchivoPersonas(Set<Persona> personas) {
-        try (BufferedWriter buffer = new BufferedWriter(new FileWriter("Resultante.txt"))) {
+        try (BufferedWriter buffer = new BufferedWriter(new FileWriter(ruta))) {
             for (Persona persona : personas) {
             	buffer.write(persona.getNombre() + "-" + persona.getApellido() + "-" + persona.getDni());
             	buffer.newLine();

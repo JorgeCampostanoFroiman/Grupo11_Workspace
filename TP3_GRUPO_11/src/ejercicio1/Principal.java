@@ -1,19 +1,31 @@
 package ejercicio1;
 
+import java.io.IOException;
+import java.util.Set;
+
 public class Principal {
 
 	public static void main(String[] args) {
 		
-		Persona prueba = new Persona ("Jorge", "Campostano", 12345678);
-		Archivo archivo = new Archivo();		
+		Archivo archivoLectura = new Archivo();	
+		Archivo archivoEscritura = new Archivo();	
+		String ruta = " ";  
+		String rutaResultado = " ";
+		archivoLectura.setRuta(ruta);
+		archivoEscritura.setRuta(rutaResultado);
 		
 		
-		System.out.println(prueba);
-		
-		archivo.setRuta("Personas.txt");
-		System.out.println(archivo.leerPersonas());
-
+		try 
+		{
+			Set<Persona> PersonasArchivo = archivoLectura.leerPersonas();
+			
+			if (!PersonasArchivo.isEmpty()) {
+				archivoEscritura.crearArchivoPersonas(PersonasArchivo);		
+			}	
+		} 
+		catch (RuntimeException e) 
+		{
+			System.out.println(e.getMessage());
+		}				
 	}
-	
-
 }
