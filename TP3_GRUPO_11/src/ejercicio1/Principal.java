@@ -6,9 +6,14 @@ public class Principal {
 		
 		Persona prueba = new Persona ("Jorge", "Campostano", 12345678);
 		Archivo archivo = new Archivo();		
-			
+		
+		
 		System.out.println(prueba);
 		
+		archivo.setRuta("Personas.txt");
+		System.out.println(archivo.leerPersonas());
+
 	}
+	
 
 }
