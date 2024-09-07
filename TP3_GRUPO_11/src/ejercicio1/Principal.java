@@ -1,6 +1,7 @@
 package ejercicio1;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Set;
 
 public class Principal {
@@ -11,8 +12,8 @@ public class Principal {
 		Archivo archivoEscritura = new Archivo();	
 		String ruta = " ";  
 		String rutaResultado = " ";
-		archivoLectura.setRuta(ruta);
-		archivoEscritura.setRuta(rutaResultado);
+		archivoLectura.setRuta("Personas.txt");
+		archivoEscritura.setRuta("Resultado.txt");
 		
 		
 		try 
@@ -22,10 +23,20 @@ public class Principal {
 			if (!PersonasArchivo.isEmpty()) {
 				archivoEscritura.crearArchivoPersonas(PersonasArchivo);		
 			}	
+			
+//			Iterator<Persona> iterador = PersonasArchivo.iterator();
+//			
+//			while(iterador.hasNext())
+//			{
+//				Persona p = (Persona) iterador.next();
+//				System.out.println(p.toString());
+//			}
+			
 		} 
 		catch (RuntimeException e) 
 		{
 			System.out.println(e.getMessage());
-		}				
+		}	
+		
 	}
 }

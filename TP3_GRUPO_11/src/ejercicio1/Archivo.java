@@ -25,7 +25,7 @@ public class Archivo {
 		Set<Persona> personas = new TreeSet<>((p1, p2) -> p1.getApellido().compareTo(p2.getApellido()));
 
 		if (!existe()) {
-			System.out.println("El archivo no existe: " + ruta);
+			System.out.println("El archivo no existe " + ruta);
 			return personas;
 		}
 
@@ -48,7 +48,9 @@ public class Archivo {
                     }			
 				}
 			}
-
+			System.out.println("Archivo leído.");
+			buffer.close();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -66,8 +68,10 @@ public class Archivo {
             	buffer.write(persona.getNombre() + "-" + persona.getApellido() + "-" + persona.getDni());
             	buffer.newLine();
             }
+            System.out.println("Archivo creado. O sobreescrito.");
+            buffer.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();	
         }
 		
 	}
