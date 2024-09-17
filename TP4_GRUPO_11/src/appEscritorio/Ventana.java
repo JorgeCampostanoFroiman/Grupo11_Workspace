@@ -45,6 +45,7 @@ public class Ventana extends JFrame {
 
 		botonEjercicio2.setText("Ejercicio2");
 		botonEjercicio2.setBounds(164, 169, 128, 33);
+		botonEjercicio2.addActionListener(e -> new Ejercicio2().setVisible(true));
 		getContentPane().add(botonEjercicio2);
 
 		botonEjercicio3.setText("Ejercicio3");
