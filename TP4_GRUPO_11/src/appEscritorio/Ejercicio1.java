@@ -52,16 +52,26 @@ public class Ejercicio1 extends JFrame {
 		lblTelefono.setBounds(64, 135, 46, 25);
 		getContentPane().add(lblTelefono);
 		getContentPane().add(txtTelefono);
+		JLabel lblLosDatosIngresados = new JLabel("Los datos ingresados fueron: ");
+		lblLosDatosIngresados.setBounds(23, 325, 401, 14);
+		getContentPane().add(lblLosDatosIngresados);
 
 		// Botón Mostrar
 		JButton btnMostrar = new JButton("Mostrar");
 		btnMostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (txtApellido.getText().trim() == "" || txtNombre.getText().trim() == ""
-						|| txtTelefono.getText().trim() == "" || txtFechaNac.getText().trim() == "") {
+				if (txtApellido.getText().trim().equals("") || txtNombre.getText().trim().equals("")
+						|| txtTelefono.getText().trim().equals("") || txtFechaNac.getText().trim().equals("")) {
 					PintarTxtBoxIncompletos();
 				} else {
-
+					String nombre = txtNombre.getText().trim();
+				    String apellido = txtApellido.getText().trim();
+				    String telefono = txtTelefono.getText().trim();
+				    String fechaNac = txtFechaNac.getText().trim();
+				   
+				    
+				   
+				    lblLosDatosIngresados.setText("Los datos ingresados fueron: " + nombre + " " + apellido + ", Tel: " + telefono + ", Fecha Nac: " + fechaNac);
 				}
 			}
 		});
@@ -76,26 +86,32 @@ public class Ejercicio1 extends JFrame {
 		lblFechaNac.setBounds(64, 179, 76, 25);
 		getContentPane().add(lblFechaNac);
 
-		JLabel lblLosDatosIngresados = new JLabel("Los datos ingresados fueron: ");
-		lblLosDatosIngresados.setBounds(23, 325, 401, 14);
-		getContentPane().add(lblLosDatosIngresados);
+		
 	}
 
 	private void PintarTxtBoxIncompletos() {
-		if (txtNombre.getText().trim() == "") {
+	    if (txtNombre.getText().trim().isEmpty()) {
+	        txtNombre.setBackground(Color.PINK); 
+	    } else {
+	        txtNombre.setBackground(Color.WHITE);  
+	    }
 
-		}
+	    if (txtApellido.getText().trim().isEmpty()) {
+	        txtApellido.setBackground(Color.PINK);
+	    } else {
+	        txtApellido.setBackground(Color.WHITE);
+	    }
 
-		if (txtApellido.getText().trim() == "") {
+	    if (txtTelefono.getText().trim().isEmpty()) {
+	        txtTelefono.setBackground(Color.PINK);
+	    } else {
+	        txtTelefono.setBackground(Color.WHITE);
+	    }
 
-		}
-
-		if (txtTelefono.getText().trim() == "") {
-
-		}
-
-		if (txtFechaNac.getText().trim() == "") {
-
-		}
+	    if (txtFechaNac.getText().trim().isEmpty()) {
+	        txtFechaNac.setBackground(Color.PINK);
+	    } else {
+	        txtFechaNac.setBackground(Color.WHITE);
+	    }
 	}
 }
