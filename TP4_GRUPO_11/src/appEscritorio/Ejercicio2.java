@@ -7,7 +7,13 @@ import java.awt.event.ActionListener;
 
 public class Ejercicio2 extends JFrame {
 
-    public Ejercicio2() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	public Ejercicio2() {
         // Configuración de la ventana
         setTitle("Promedio");
         setSize(400, 300);
@@ -47,13 +53,26 @@ public class Ejercicio2 extends JFrame {
         JComboBox<String> tpsComboBox = new JComboBox<>(new String[]{"Aprobado", "Desaprobado"});
         notasPanel.add(tpsComboBox);
         
+        //
+        JLabel lblResultadosCalculados = new JLabel("");
+        lblResultadosCalculados.setHorizontalAlignment(SwingConstants.CENTER); // centro horizontalmente
+  
+    
+        
         // Panel para botones
         JPanel buttonPanel = new JPanel(new GridLayout(3, 1, 5, 5));
         
         JButton calcularButton = new JButton("CALCULAR");
         calcularButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //Aca manejariamos el calculo, lo ideal seria una funcion
+                //Calculo promedio
+            	 float promedio = calcularPromedio(nota1Field, nota2Field, nota3Field);
+            	//Determino condicion
+            	String condicion = "";
+            	
+            	// esto tiene que ir en un JLabel y mostrarse SIMIL notas del estudiante
+            	lblResultadosCalculados.setText("El promedio fue de: " + promedio + " y la condicion es: " + condicion + " ." ) ;
+				    
             }
         });
         buttonPanel.add(calcularButton);
@@ -71,7 +90,18 @@ public class Ejercicio2 extends JFrame {
         
         mainPanel.add(inputPanel, BorderLayout.NORTH);
 
+        mainPanel.add(lblResultadosCalculados, BorderLayout.SOUTH);
+        
+        
         // Configuración del panel principal
         setContentPane(mainPanel);
     }
+    
+    
+	private float calcularPromedio(JTextField nota1, JTextField nota2,JTextField nota3) {
+		 float promedio = (Float.parseFloat(nota1.getText().trim()) 
+                 + Float.parseFloat(nota2.getText().trim()) 
+                 + Float.parseFloat(nota3.getText().trim())) / 3;
+		return promedio;	
+		 }
 }
