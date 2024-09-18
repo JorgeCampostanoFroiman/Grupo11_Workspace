@@ -50,6 +50,7 @@ public class Ventana extends JFrame {
 
 		botonEjercicio3.setText("Ejercicio3");
 		botonEjercicio3.setBounds(164, 224, 128, 33);
+		botonEjercicio3.addActionListener(e -> new Ejercicio3().setVisible(true));
 		getContentPane().add(botonEjercicio3);
 
 		JLabel lblGrupo = new JLabel("GRUPO NRO: 11");
