@@ -72,6 +72,12 @@ public class Ejercicio1 extends JFrame {
 				    
 				   
 				    lblLosDatosIngresados.setText("Los datos ingresados fueron: " + nombre + " " + apellido + ", Tel: " + telefono + ", Fecha Nac: " + fechaNac);
+				    
+	     // Limpio campos
+				    txtNombre.setText("");
+				    txtApellido.setText("");
+				    txtTelefono.setText("");
+				    txtFechaNac.setText("");
 				}
 			}
 		});
@@ -86,6 +92,7 @@ public class Ejercicio1 extends JFrame {
 		lblFechaNac.setBounds(64, 179, 76, 25);
 		getContentPane().add(lblFechaNac);
 
+		
 		
 	}
 
