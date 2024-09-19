@@ -24,7 +24,7 @@ public class Ejercicio3 extends JFrame {
         JRadioButton macButton = new JRadioButton("Mac");
         JRadioButton linuxButton = new JRadioButton("Linux");
         
-        ButtonGroup osGroup = new ButtonGroup();
+        ButtonGroup osGroup = new ButtonGroup(); // Solo se puede seleccionar 1 radio button
         osGroup.add(windowsButton);
         osGroup.add(macButton);
         osGroup.add(linuxButton);
@@ -43,7 +43,7 @@ public class Ejercicio3 extends JFrame {
         //
         JLabel tituloPanel2 = new JLabel();
         tituloPanel2.setText("Elije una especialidad");
-        
+    
         JPanel specialityPanel = new JPanel();
        // specialityPanel.setBorder(BorderFactory.createTitledBorder("Elije una especialidad"));
         specialityPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -59,13 +59,23 @@ public class Ejercicio3 extends JFrame {
         
         hoursPanel.add(hoursLabel);
         hoursPanel.add(hoursField);
-
+        //
+        JLabel osSeleccionado = new JLabel();
+        
         // Botón de aceptar
         JButton acceptButton = new JButton("Aceptar");
         acceptButton.addActionListener(e -> {
-
+        	
+        	if (windowsButton.isSelected()) {
+        		osSeleccionado.setText("Windows");
+        	} else if (macButton.isSelected()){
+        		osSeleccionado.setText("Mac");
+        	} else if (linuxButton.isSelected()) {
+        		osSeleccionado.setText("Linux");
+        	} else { osSeleccionado.setText("Ningun OS Seleccionado");};
+        	
             // Mostrar mensaje con la información seleccionada
-            String message = "";
+            String message = osSeleccionado.getText() + " - " ; 
 
             JOptionPane.showMessageDialog(this, message, "Información Seleccionada",
             							  JOptionPane.INFORMATION_MESSAGE);
