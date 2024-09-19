@@ -29,6 +29,11 @@ public class Ejercicio3 extends JFrame {
         osGroup.add(macButton);
         osGroup.add(linuxButton);
         
+        //
+        JLabel tituloPanel1 = new JLabel();
+        tituloPanel1.setText("Elije una sistema operativo");
+        
+        //
         JPanel osPanel = new JPanel();
         osPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK), "Elije un sistema operativo" ));
         osPanel.add(windowsButton);
