@@ -1,5 +1,7 @@
 package appEscritorio;
 
+import java.awt.Color;
+
 import javax.swing.*;
 
 
@@ -28,7 +30,7 @@ public class Ejercicio3 extends JFrame {
         osGroup.add(linuxButton);
         
         JPanel osPanel = new JPanel();
-        osPanel.setBorder(BorderFactory.createTitledBorder("Elije un sistema operativo"));
+        osPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK), "Elije un sistema operativo" ));
         osPanel.add(windowsButton);
         osPanel.add(macButton);
         osPanel.add(linuxButton);
@@ -38,8 +40,14 @@ public class Ejercicio3 extends JFrame {
         JCheckBox adminCheck = new JCheckBox("Administración");
         JCheckBox designCheck = new JCheckBox("Diseño Gráfico");
         
+        //
+        JLabel tituloPanel2 = new JLabel();
+        tituloPanel2.setText("Elije una especialidad");
+        
         JPanel specialityPanel = new JPanel();
-        specialityPanel.setBorder(BorderFactory.createTitledBorder("Elije una especialidad"));
+       // specialityPanel.setBorder(BorderFactory.createTitledBorder("Elije una especialidad"));
+        specialityPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        specialityPanel.add(tituloPanel2);
         specialityPanel.add(programmingCheck);
         specialityPanel.add(adminCheck);
         specialityPanel.add(designCheck);
