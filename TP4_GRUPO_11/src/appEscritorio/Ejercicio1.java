@@ -49,11 +49,11 @@ public class Ejercicio1 extends JFrame {
 		getContentPane().add(lblApellido);
 		getContentPane().add(txtApellido);
 		JLabel lblTelefono = new JLabel("Telefono:");
-		lblTelefono.setBounds(64, 135, 46, 25);
+		lblTelefono.setBounds(64, 135, 68, 25);
 		getContentPane().add(lblTelefono);
 		getContentPane().add(txtTelefono);
 		JLabel lblLosDatosIngresados = new JLabel("Los datos ingresados fueron: ");
-		lblLosDatosIngresados.setBounds(23, 325, 401, 14);
+		lblLosDatosIngresados.setBounds(10, 315, 414, 46);
 		getContentPane().add(lblLosDatosIngresados);
 
 		// Botón Mostrar
