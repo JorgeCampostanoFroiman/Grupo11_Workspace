@@ -95,8 +95,8 @@ public class Ejercicio3 extends JFrame {
 					EspecialidadSeleccionada += " - Diseño Gráfico";
 			}
 
-			if (EspecialidadSeleccionada.isEmpty()) {
-				EspecialidadSeleccionada = " Ninguna Especilidad Seleccionada";
+			if (EspecialidadSeleccionada == null) {
+				EspecialidadSeleccionada = " - Ninguna Especilidad Seleccionada";
 			}
 
 			// Mostrar mensaje con la información seleccionada
