@@ -18,7 +18,7 @@ public class Ejercicio2 extends JFrame {
 		// Configuración de la ventana
 		setTitle("Promedio");
 		setSize(400, 300);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 
 		// Panel principal

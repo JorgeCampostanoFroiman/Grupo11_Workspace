@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
 
 public class Ejercicio1 extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -52,12 +54,13 @@ public class Ejercicio1 extends JFrame {
 		lblTelefono.setBounds(64, 135, 68, 25);
 		getContentPane().add(lblTelefono);
 		getContentPane().add(txtTelefono);
-		JLabel lblLosDatosIngresados = new JLabel("Los datos ingresados fueron: ");
-		lblLosDatosIngresados.setBounds(10, 315, 414, 46);
+		JLabel lblLosDatosIngresados = new JLabel("Los datos ingresados fueron:");
+		lblLosDatosIngresados.setBounds(10, 275, 700, 14);
 		getContentPane().add(lblLosDatosIngresados);
 
 		// Botón Mostrar
 		JButton btnMostrar = new JButton("Mostrar");
+		btnMostrar.setBounds(154, 230, 122, 34);
 		btnMostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (txtApellido.getText().trim().equals("") || txtNombre.getText().trim().equals("")
@@ -71,7 +74,7 @@ public class Ejercicio1 extends JFrame {
 				   
 				    
 				   
-				    lblLosDatosIngresados.setText("Los datos ingresados fueron: " + nombre + " " + apellido + ", Tel: " + telefono + ", Fecha Nac: " + fechaNac);
+				    lblLosDatosIngresados.setText("Los datos ingresados fueron: \n" + nombre + " \n" + apellido + ", Tel: " + telefono + ", Fecha Nac: " + fechaNac);
 				    
 	     // Limpio campos
 				    txtNombre.setText("");
@@ -81,7 +84,6 @@ public class Ejercicio1 extends JFrame {
 				}
 			}
 		});
-		btnMostrar.setBounds(154, 230, 122, 34);
 		getContentPane().add(btnMostrar);
 
 		txtFechaNac = new JTextField();

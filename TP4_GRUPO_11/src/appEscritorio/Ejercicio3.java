@@ -14,7 +14,7 @@ public class Ejercicio3 extends JFrame {
 		// Configuración de la ventana
 		setTitle("Seleccion multiple");
 		setSize(350, 308);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 
 		// Panel principal con un BoxLayout
@@ -67,11 +67,11 @@ public class Ejercicio3 extends JFrame {
 			String EspecialidadSeleccionada = null;
 
 			if (windowsButton.isSelected()) {
-				osSeleccionado = "Windows";
+				osSeleccionado = "OS: Windows";
 			} else if (macButton.isSelected()) {
-				osSeleccionado = "Mac";
+				osSeleccionado = "OS: Mac";
 			} else if (linuxButton.isSelected()) {
-				osSeleccionado = "Linux";
+				osSeleccionado = "OS: Linux";
 			}
 
 			if (programmingCheck.isSelected()) {
@@ -100,7 +100,7 @@ public class Ejercicio3 extends JFrame {
 			}
 
 			// Mostrar mensaje con la información seleccionada
-			String message = osSeleccionado + EspecialidadSeleccionada + " - ";
+			String message = osSeleccionado + "\nEspecialidad/es: " + EspecialidadSeleccionada + "\nHoras en la PC: " + hoursField.getText();
 
 			JOptionPane.showMessageDialog(this, message, "Información Seleccionada", JOptionPane.INFORMATION_MESSAGE);
 		});
