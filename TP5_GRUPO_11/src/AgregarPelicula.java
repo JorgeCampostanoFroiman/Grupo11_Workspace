@@ -3,11 +3,15 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JComboBox;
 
 public class AgregarPelicula extends JPanel {
 	private JTextField textField;
-
+	static int cantidadPeliculas = 0;
+	
 	public AgregarPelicula() {
 		setLayout(null);
 		
@@ -43,5 +47,21 @@ public class AgregarPelicula extends JPanel {
 		cbGenero.addItem("Romantica");
 		add(cbGenero);
 		
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText() == null || textField.getText().isEmpty()) {
+				   // Vacio. Colocar excepcion
+				} else {
+					cantidadPeliculas++;
+					 lblId.setText("ID: " + cantidadPeliculas);
+				}
+
+			}
+			
+		});
+		
+	
 	}
+	
+	
 }
