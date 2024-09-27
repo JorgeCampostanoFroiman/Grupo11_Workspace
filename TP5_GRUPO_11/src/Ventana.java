@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -14,7 +15,7 @@ public class Ventana extends JFrame {
 
 	private JMenu mnPeliculas; 
 	private JMenuBar menuBar;
-	
+	private AgregarPelicula addMovie = new AgregarPelicula();
 
 	public Ventana() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,7 +32,6 @@ public class Ventana extends JFrame {
 		JMenuItem btnAgregar = new JMenuItem("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AgregarPelicula addMovie = new AgregarPelicula();
 				getContentPane().add(addMovie);
 				getContentPane().repaint();
 				getContentPane().revalidate();
@@ -42,6 +42,16 @@ public class Ventana extends JFrame {
 		mnPeliculas.add(btnAgregar);
 		
 		JMenuItem btnListar = new JMenuItem("Listar");
+		btnListar.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        ListarPelicula listar = new ListarPelicula();
+		        listar.Listar(addMovie.getDefaultListModel());
+		        getContentPane().removeAll(); 
+		        getContentPane().add(listar);
+		        getContentPane().repaint();
+		        getContentPane().revalidate();
+		    }
+		});
 		mnPeliculas.add(btnListar);
 	}
 
