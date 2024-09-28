@@ -45,6 +45,7 @@ public class AgregarPelicula extends JPanel {
 		
 		JComboBox<String> cbGenero = new JComboBox<String>();
 		cbGenero.setBounds(195, 111, 133, 20);
+		cbGenero.addItem("Seleccione un genero");
 		cbGenero.addItem("Terror");
 		cbGenero.addItem("Accion");
 		cbGenero.addItem("Suspenso");
@@ -56,19 +57,27 @@ public class AgregarPelicula extends JPanel {
 		        if (textField.getText() == null || textField.getText().isEmpty()) {
 		            JOptionPane.showMessageDialog(null, "El nombre no puede estar vacío.");
 		        } else {
-		            cantidadPeliculas++;
+		            
 		            Categoria cat = null;
-		            if (cbGenero.getSelectedItem() != null) {
-		                cat = new Categoria(cbGenero.getSelectedItem().toString());
+		            if (cbGenero.getSelectedItem() == null || cbGenero.getSelectedItem() == "Seleccione un genero") {
+		            	JOptionPane.showMessageDialog(null, "Debe seleccionar un genero");
 		            } else {
-		            	 JOptionPane.showMessageDialog(null, "Debe seleccionar un genero");
+		            	cat = new Categoria(cbGenero.getSelectedItem().toString());
+		            	cantidadPeliculas++;
+			            lblId.setText("ID: " + cantidadPeliculas);
+			            Pelicula pel = new Pelicula(); 
+			            pel.setId(cantidadPeliculas);
+			            pel.setNombre(textField.getText());
+			            pel.setCategoria(cat);
+			            listModel.addElement(pel);
 		            }
-		            lblId.setText("ID: " + cantidadPeliculas);
-		            Pelicula pel = new Pelicula(); 
-		            pel.setId(cantidadPeliculas);
-		            pel.setNombre(textField.getText());
-		            pel.setCategoria(cat);
-		            listModel.addElement(pel);
+		            
+//		            if (cbGenero.getSelectedItem() != null) {
+//		                cat = new Categoria(cbGenero.getSelectedItem().toString());
+//		            } else {
+//		            	 JOptionPane.showMessageDialog(null, "Debe seleccionar un genero");
+//		            }
+		            
 		        }
 		    }
 		});

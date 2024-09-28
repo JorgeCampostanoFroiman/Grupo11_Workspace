@@ -19,7 +19,7 @@ public class Ventana extends JFrame {
 
 	public Ventana() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 550, 430);
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -32,10 +32,10 @@ public class Ventana extends JFrame {
 		JMenuItem btnAgregar = new JMenuItem("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				getContentPane().removeAll(); 
 				getContentPane().add(addMovie);
 				getContentPane().repaint();
 				getContentPane().revalidate();
-
 			}
 			
 		});

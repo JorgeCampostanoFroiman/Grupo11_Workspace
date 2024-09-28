@@ -19,10 +19,14 @@ public class ListarPelicula extends JPanel  {
 		setLayout(null);
 		
 		list = new JList();
-		list.setBounds(29, 35, 398, 242);
+		list.setBounds(105, 57, 362, 261);
 		dlPeliculas = new DefaultListModel<Pelicula>();
 		list.setModel(dlPeliculas);
 		add(list);
+		
+		JLabel lblPeliculas = new JLabel("Peliculas");
+		lblPeliculas.setBounds(23, 165, 55, 28);
+		add(lblPeliculas);
 		
 	}
 	
