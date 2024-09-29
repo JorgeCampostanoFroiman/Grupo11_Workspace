@@ -12,39 +12,46 @@ import javax.swing.JComboBox;
 
 public class AgregarPelicula extends JPanel {
 	private JTextField textField;
-	private DefaultListModel <Pelicula> listModel;
-	private Pelicula pel = new Pelicula();
-	static int cantidadPeliculas = 0;
+	private JLabel lbl_ID1;
+	private JLabel lblNombre;
+	private JLabel lblGenero;
+	private JButton btnAceptar;
+	private JComboBox<String> cbGenero;
+	private JLabel lbl_ID2;
+	private static DefaultListModel<Pelicula> listModel;
+	static int cantidadPeliculas = 1;
+
 	public AgregarPelicula() {
 		setLayout(null);
 		listModel = new DefaultListModel<>();
 		
-		JLabel lblId = new JLabel("ID");
-		lblId.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblId.setBounds(103, 42, 46, 14);
-		add(lblId);
 		
-		JLabel lblNombre = new JLabel("Nombre");
+		lbl_ID1 = new JLabel("ID");
+		lbl_ID1.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lbl_ID1.setBounds(169, 82, 46, 14);
+		add(lbl_ID1);
+
+		lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblNombre.setBounds(103, 76, 46, 14);
+		lblNombre.setBounds(169, 116, 46, 14);
 		add(lblNombre);
-		
-		JLabel lblGenero = new JLabel("Genero");
+
+		lblGenero = new JLabel("Genero");
 		lblGenero.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblGenero.setBounds(103, 113, 46, 14);
+		lblGenero.setBounds(169, 153, 46, 14);
 		add(lblGenero);
-		
+
 		textField = new JTextField();
-		textField.setBounds(195, 74, 133, 20);
+		textField.setBounds(261, 114, 133, 20);
 		add(textField);
 		textField.setColumns(10);
-		
-		JButton btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(103, 148, 92, 20);
+
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.setBounds(169, 188, 92, 20);
 		add(btnAceptar);
-		
-		JComboBox<String> cbGenero = new JComboBox<String>();
-		cbGenero.setBounds(195, 111, 133, 20);
+
+		cbGenero = new JComboBox<String>();
+		cbGenero.setBounds(261, 151, 133, 20);
 		cbGenero.addItem("Seleccione un genero");
 		cbGenero.addItem("Terror");
 		cbGenero.addItem("Accion");
@@ -52,44 +59,39 @@ public class AgregarPelicula extends JPanel {
 		cbGenero.addItem("Romantica");
 		add(cbGenero);
 		
+		lbl_ID2 = new JLabel("");
+		lbl_ID2.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lbl_ID2.setBounds(261, 82, 46, 14);
+		lbl_ID2.setText(String.valueOf(cantidadPeliculas));
+		add(lbl_ID2);
+
 		btnAceptar.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent arg0) {
-		        if (textField.getText() == null || textField.getText().isEmpty()) {
-		            JOptionPane.showMessageDialog(null, "El nombre no puede estar vacío.");
-		        } else {
-		            
-		            Categoria cat = null;
-		            if (cbGenero.getSelectedItem() == null || cbGenero.getSelectedItem() == "Seleccione un genero") {
-		            	JOptionPane.showMessageDialog(null, "Debe seleccionar un genero");
-		            } else {
-		            	cat = new Categoria(cbGenero.getSelectedItem().toString());
-		            	cantidadPeliculas++;
-			            lblId.setText("ID: " + cantidadPeliculas);
-			            Pelicula pel = new Pelicula(); 
-			            pel.setId(cantidadPeliculas);
-			            pel.setNombre(textField.getText());
-			            pel.setCategoria(cat);
-			            listModel.addElement(pel);
-		            }
-		            
-//		            if (cbGenero.getSelectedItem() != null) {
-//		                cat = new Categoria(cbGenero.getSelectedItem().toString());
-//		            } else {
-//		            	 JOptionPane.showMessageDialog(null, "Debe seleccionar un genero");
-//		            }
-		            
-		        }
-		    }
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText() == null || textField.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "El nombre no puede estar vacío.");
+				} else {
+
+					Categoria cat = null;
+					if (cbGenero.getSelectedItem() == null || cbGenero.getSelectedItem() == "Seleccione un genero") {
+						JOptionPane.showMessageDialog(null, "Debe seleccionar un genero");
+					} else {
+						cat = new Categoria(cbGenero.getSelectedItem().toString());
+						Pelicula pel = new Pelicula();
+						pel.setId(cantidadPeliculas);
+						pel.setNombre(textField.getText());
+						pel.setCategoria(cat);
+						listModel.addElement(pel);
+						
+						cantidadPeliculas++;
+						lbl_ID2.setText(String.valueOf(cantidadPeliculas));
+					}				
+				}
+			}
 		});
-		
-		
-	
+
 	}
-	
-	
-	public DefaultListModel<Pelicula> getDefaultListModel() {
-	    return listModel;
+
+	public static DefaultListModel<Pelicula> getDefaultListModel() {
+		return listModel;
 	}
-	
-	
 }

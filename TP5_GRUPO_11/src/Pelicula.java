@@ -1,5 +1,5 @@
 
-public class Pelicula {
+public class Pelicula implements Comparable<Pelicula>{
     private static int contadorID = 1;
     private int id;
     private String nombre;
@@ -43,5 +43,11 @@ public class Pelicula {
 	    public String toString() {
 	        return "ID: " + id + ", Nombre: " + nombre + ", Genero: " + categoria.getNombre();
 	    }
-    
+
+	@Override
+	public int compareTo(Pelicula o) {
+        return this.nombre.compareToIgnoreCase(o.getNombre());
+	}
+
+     
 }
