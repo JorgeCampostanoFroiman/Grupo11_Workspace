@@ -1,36 +1,33 @@
 package negocioImpl;
 
 import java.util.ArrayList;
-
+import dao.PersonaDao;
+import daoImpl.PersonaDaoImpl;
 import entidad.Persona;
 import negocio.PersonaNegocio;
 
 public class PersonaNegocioImpl implements PersonaNegocio{
 
-	@Override
-	public boolean Insert(Persona persona) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean Update(Persona persona_modificada) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean Delete(Persona persona_a_elimianar) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public ArrayList<Persona> GetListAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	// Definiciones personaNegocio
+	private PersonaDao personaDao = new PersonaDaoImpl();
 	
+    @Override
+    public boolean Insert(Persona persona) {
+        return personaDao.Insert(persona);
+    }
+
+    @Override
+    public boolean Update(Persona persona_modificada) {
+        return personaDao.Update(persona_modificada);
+    }
+
+    @Override
+    public boolean Delete(Persona persona_a_elimianar) {
+        return personaDao.Delete(persona_a_elimianar);
+    }
+
+
+    @Override
+    public ArrayList<Persona> GetListAll() {
+        return personaDao.GetListAll();
+    }
 }

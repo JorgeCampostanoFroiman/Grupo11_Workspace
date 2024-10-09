@@ -2,23 +2,23 @@ package entidad;
 
 public class Persona {
 	
-	private int idPersona;
 	private String nombre;
+	private String apellido;
 	private int dni;
 
-	public Persona(int idPersona, String nombre, int dni)
+	public Persona(String apellido, String nombre, int dni)
 	{
-		this.idPersona = idPersona;
 		this.nombre = nombre;
+		this.apellido = apellido;
 		this.dni = dni;
 	}
 
-	public int getIdPersona() {
-		return idPersona;
+	public String getApellido() {
+		return apellido;
 	}
 
-	public void setIdPersona(int idPersona) {
-		this.idPersona = idPersona;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 
 	public String getNombre() {
@@ -36,5 +36,10 @@ public class Persona {
 	public void setDni(int dni) {
 		this.dni = dni;
 	}
+	
+    @Override
+    public String toString() {
+        return nombre + " " + apellido + " (DNI: " + dni + ")";
+    }
 
 }
