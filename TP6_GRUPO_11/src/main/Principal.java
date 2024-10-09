@@ -1,5 +1,8 @@
 package main;
 
+import negocio.PersonaNegocio;
+import negocioImpl.PersonaNegocioImpl;
+import presentacion.controlador.Controlador;
 import presentacion.vista.VentanaPrincipal;
 
 public class Principal {
@@ -8,6 +11,10 @@ public class Principal {
 		
 		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
 		
+		PersonaNegocio negocio = new PersonaNegocioImpl(); 
+		
+		Controlador controlador = new Controlador(ventanaPrincipal, negocio);	
+		controlador.Inicializar();
 	}
 
 }
