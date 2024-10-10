@@ -1,5 +1,9 @@
 package main;
 
+import java.util.ArrayList;
+
+import dao.PersonaDao;
+import entidad.Persona;
 import negocio.PersonaNegocio;
 import negocioImpl.PersonaNegocioImpl;
 import presentacion.controlador.Controlador;
@@ -15,6 +19,9 @@ public class Principal {
 		
 		Controlador controlador = new Controlador(ventanaPrincipal, negocio);	
 		controlador.Inicializar();
+		
+	
 	}
 
 }
+	

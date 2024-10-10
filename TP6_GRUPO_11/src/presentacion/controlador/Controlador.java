@@ -18,7 +18,7 @@ public class Controlador implements ActionListener{
 			this._ventana.getBtnAgregar().addActionListener(a -> AgregarVistaAgregar(a));
 			this._ventana.getAddperson().getBtnAceptar().addActionListener(a -> AgregarPersona(a));
 			
-			this._ventana.getBtnListar().addActionListener(a -> AgregarVistaAgregar(a));
+			this._ventana.getBtnListar().addActionListener(a -> AgregarVistaListar(a));
 
 		}
 		
