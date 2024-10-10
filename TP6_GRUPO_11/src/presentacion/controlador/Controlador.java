@@ -17,6 +17,9 @@ public class Controlador implements ActionListener{
 			this._personaNegocio = _personaNegocio;
 			this._ventana.getBtnAgregar().addActionListener(a -> AgregarVistaAgregar(a));
 			this._ventana.getAddperson().getBtnAceptar().addActionListener(a -> AgregarPersona(a));
+			
+			this._ventana.getBtnListar().addActionListener(a -> AgregarVistaAgregar(a));
+
 		}
 		
 	
@@ -34,6 +37,15 @@ public class Controlador implements ActionListener{
 		public void AgregarPersona(ActionEvent a) {
 			//Logica para agregar una persona
 		}
+		
+		public void AgregarVistaListar(ActionEvent a) {
+			_ventana.getContentPane().removeAll(); 
+			_ventana.getContentPane().add(_ventana.getListperson());
+			_ventana.getContentPane().repaint();
+			_ventana.getContentPane().revalidate();
+		}
+		
+		
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

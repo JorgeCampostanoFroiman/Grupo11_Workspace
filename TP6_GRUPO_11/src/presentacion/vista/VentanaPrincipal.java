@@ -15,7 +15,11 @@ public class VentanaPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	JMenuItem btnAgregar;
+	JMenuItem btnListar;
+	
 	private AgregarPersona addperson = new AgregarPersona();
+	
+	private ListarPersona listperson = new ListarPersona();
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -52,8 +56,11 @@ public class VentanaPrincipal extends JFrame {
 		JMenuItem mntmEliminar = new JMenuItem("Eliminar");
 		mnPersona.add(mntmEliminar);
 		
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Listar");
-		mnPersona.add(mntmNewMenuItem_2);
+		/*JMenuItem mntmNewMenuItem_2 = new JMenuItem("Listar");
+		mnPersona.add(mntmNewMenuItem_2);*/
+		btnListar = new JMenuItem("Listar");
+		mnPersona.add(btnListar);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -65,7 +72,15 @@ public class VentanaPrincipal extends JFrame {
 		return addperson;
 	}
 
+	public ListarPersona getListperson() {
+		return listperson;
+	}
+
 	public JMenuItem getBtnAgregar() {
 		return btnAgregar;
+	}
+	
+	public JMenuItem getBtnListar() {
+		return btnListar;
 	}
 }

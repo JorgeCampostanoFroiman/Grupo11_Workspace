@@ -62,5 +62,7 @@ public class AgregarPersona extends JPanel {
 	public JButton getBtnAceptar() {
 		return btnAceptar;
 	}
+	
+	
 
 }
