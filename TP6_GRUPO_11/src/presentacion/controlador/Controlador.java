@@ -73,6 +73,7 @@ public class Controlador implements ActionListener{
 		}
 		
 		public void AgregarVistaListar(ActionEvent a) {
+			_ventana.getListperson().RecargarLista();
 			_ventana.getContentPane().removeAll(); 
 			_ventana.getContentPane().add(_ventana.getListperson());
 			_ventana.getContentPane().repaint();
@@ -80,6 +81,7 @@ public class Controlador implements ActionListener{
 		}
 		
 	    public void MostrarVistaEliminar(ActionEvent a) {
+	    	_eliminarPersona.cargarListaPersonas();
 	        _ventana.getContentPane().removeAll();
 	        _ventana.getContentPane().add(_eliminarPersona);
 	        _ventana.getContentPane().repaint();
@@ -87,6 +89,7 @@ public class Controlador implements ActionListener{
 	    }
 	    
 	    public void MostrarVistaModificar(ActionEvent a) {
+	    	_modificarPersona.cargarListaPersonas();
 	        _ventana.getContentPane().removeAll();
 	        _ventana.getContentPane().add(_modificarPersona);
 	        _ventana.getContentPane().repaint();

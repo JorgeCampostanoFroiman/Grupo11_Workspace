@@ -15,34 +15,34 @@ public class AgregarPersona extends JPanel {
 		setLayout(null);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(207, 30, 118, 20);
+		txtNombre.setBounds(233, 30, 118, 20);
 		add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtApllido = new JTextField();
-		txtApllido.setBounds(207, 76, 118, 20);
+		txtApllido.setBounds(233, 76, 118, 20);
 		add(txtApllido);
 		txtApllido.setColumns(10);
 		
 		txtDni = new JTextField();
-		txtDni.setBounds(207, 124, 118, 20);
+		txtDni.setBounds(233, 124, 118, 20);
 		add(txtDni);
 		txtDni.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(124, 33, 46, 14);
+		lblNombre.setBounds(150, 33, 46, 14);
 		add(lblNombre);
 		
 		JLabel lblApellido = new JLabel("Apellido");
-		lblApellido.setBounds(124, 79, 46, 14);
+		lblApellido.setBounds(150, 79, 46, 14);
 		add(lblApellido);
 		
 		JLabel lblDni = new JLabel("Dni");
-		lblDni.setBounds(124, 127, 46, 14);
+		lblDni.setBounds(150, 127, 46, 14);
 		add(lblDni);
 		
 		btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(158, 170, 104, 31);
+		btnAceptar.setBounds(184, 170, 104, 31);
 		add(btnAceptar);
 
 	}

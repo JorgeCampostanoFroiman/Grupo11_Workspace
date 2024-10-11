@@ -14,19 +14,20 @@ public class EliminarPersona extends JPanel {
     private PersonaNegocio personaNegocio;
  
     public EliminarPersona() {
-        setLayout(null);
         personaNegocio = new PersonaNegocioImpl();
  
  
         modeloLista = new DefaultListModel<>();
-        listaPersonas = new JList<>(modeloLista);
-        JScrollPane scrollPane = new JScrollPane(listaPersonas);
-        scrollPane.setBounds(50, 50, 200, 150);
+        setLayout(null);
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(154, 11, 198, 198);
         add(scrollPane);
+        listaPersonas = new JList<>(modeloLista);
+        scrollPane.setViewportView(listaPersonas);
  
  
         btnEliminar = new JButton("Eliminar");
-        btnEliminar.setBounds(100, 220, 100, 30);
+        btnEliminar.setBounds(204, 209, 100, 30);
         add(btnEliminar);
  
  
@@ -38,6 +39,7 @@ public class EliminarPersona extends JPanel {
                     boolean eliminado = personaNegocio.Delete(personaSeleccionada);
                     if (eliminado) {
                         modeloLista.removeElement(personaSeleccionada);
+                        cargarListaPersonas();
                         JOptionPane.showMessageDialog(null, "Persona eliminada correctamente.");
                     } else {
                         JOptionPane.showMessageDialog(null, "Error al eliminar la persona.");
@@ -50,7 +52,7 @@ public class EliminarPersona extends JPanel {
         cargarListaPersonas();
     }
  
-    private void cargarListaPersonas() {
+    public void cargarListaPersonas() {
         modeloLista.clear();
         for (Persona p : personaNegocio.GetListAll()) {
             modeloLista.addElement(p);

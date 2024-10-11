@@ -11,7 +11,7 @@ public class PersonaDaoImpl implements PersonaDao
 	
     // Método para conectar a la base de datos
     private Connection conectar() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/bdPersonas", "root", "Mfer-1234"); // Ajustar credenciales
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/bdPersonas", "root", "root"); // Ajustar credenciales
     }
 
     @Override

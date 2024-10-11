@@ -22,38 +22,49 @@ public class ModificarPersona extends JPanel {
  
  
         modeloLista = new DefaultListModel<>();
-        listaPersonas = new JList<>(modeloLista);
-        JScrollPane scrollPane = new JScrollPane(listaPersonas);
-        scrollPane.setBounds(50, 50, 200, 150);
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(21, 26, 440, 150);
         add(scrollPane);
+        listaPersonas = new JList<>(modeloLista);
+        scrollPane.setViewportView(listaPersonas);
+        
+        
+               listaPersonas.addListSelectionListener(e -> {
+                   Persona personaSeleccionada = listaPersonas.getSelectedValue();
+                   if (personaSeleccionada != null) {
+                       txtNombre.setText(personaSeleccionada.getNombre());
+                       txtApellido.setText(personaSeleccionada.getApellido());
+                       txtDni.setText(String.valueOf(personaSeleccionada.getDni()));
+                   }
+               });
  
         txtNombre = new JTextField();
-        txtNombre.setBounds(300, 50, 150, 25);
+        txtNombre.setBounds(21, 196, 100, 25);
         add(txtNombre);
  
         txtApellido = new JTextField();
-        txtApellido.setBounds(300, 100, 150, 25);
+        txtApellido.setBounds(139, 196, 100, 25);
         add(txtApellido);
  
         txtDni = new JTextField();
-        txtDni.setBounds(300, 150, 150, 25);
+        txtDni.setBounds(249, 196, 100, 25);
         txtDni.setEditable(false);
         add(txtDni);
  
         JLabel lblNombre = new JLabel("Nombre:");
-        lblNombre.setBounds(250, 50, 50, 25);
+        lblNombre.setBounds(21, 177, 50, 25);
         add(lblNombre);
  
         JLabel lblApellido = new JLabel("Apellido:");
-        lblApellido.setBounds(250, 100, 50, 25);
+        lblApellido.setBounds(139, 177, 50, 25);
         add(lblApellido);
  
         JLabel lblDni = new JLabel("DNI:");
-        lblDni.setBounds(250, 150, 50, 25);
+        lblDni.setBounds(252, 177, 50, 25);
         add(lblDni);
  
         btnModificar = new JButton("Modificar");
-        btnModificar.setBounds(350, 200, 100, 30);
+        btnModificar.setBounds(361, 193, 100, 30);
         add(btnModificar);
  
  
@@ -68,6 +79,7 @@ public class ModificarPersona extends JPanel {
                     boolean actualizado = personaNegocio.Update(personaSeleccionada);
                     if (actualizado) {
                         JOptionPane.showMessageDialog(null, "Persona modificada correctamente.");
+                        cargarListaPersonas();
                         limpiarCampos();
                     } else {
                         JOptionPane.showMessageDialog(null, "Error al modificar la persona.");
@@ -77,20 +89,10 @@ public class ModificarPersona extends JPanel {
         });
  
  
-        listaPersonas.addListSelectionListener(e -> {
-            Persona personaSeleccionada = listaPersonas.getSelectedValue();
-            if (personaSeleccionada != null) {
-                txtNombre.setText(personaSeleccionada.getNombre());
-                txtApellido.setText(personaSeleccionada.getApellido());
-                txtDni.setText(String.valueOf(personaSeleccionada.getDni()));
-            }
-        });
- 
- 
         cargarListaPersonas();
     }
  
-    private void cargarListaPersonas() {
+    public void cargarListaPersonas() {
         modeloLista.clear();
         for (Persona p : personaNegocio.GetListAll()) {
             modeloLista.addElement(p);
