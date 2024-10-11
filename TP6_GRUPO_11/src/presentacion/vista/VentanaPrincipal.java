@@ -2,7 +2,6 @@ package presentacion.vista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,16 +9,17 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+
 public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	JMenuItem btnAgregar;
-	JMenuItem btnListar;
-	
-	private AgregarPersona addperson = new AgregarPersona();
-	
-	private ListarPersona listperson = new ListarPersona();
+	private JMenuItem btnAgregar;
+    private JMenuItem btnModificar;
+    private JMenuItem btnEliminar; 
+    private JMenuItem btnListar;
+    private AgregarPersona addperson = new AgregarPersona();
+    private ListarPersona listperson = new ListarPersona();
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -50,14 +50,12 @@ public class VentanaPrincipal extends JFrame {
 		btnAgregar = new JMenuItem("Agregar");
 		mnPersona.add(btnAgregar);
 		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Modificar");
-		mnPersona.add(mntmNewMenuItem_1);
-		
-		JMenuItem mntmEliminar = new JMenuItem("Eliminar");
-		mnPersona.add(mntmEliminar);
-		
-		/*JMenuItem mntmNewMenuItem_2 = new JMenuItem("Listar");
-		mnPersona.add(mntmNewMenuItem_2);*/
+        btnModificar = new JMenuItem("Modificar");
+        mnPersona.add(btnModificar);
+
+        btnEliminar = new JMenuItem("Eliminar");
+        mnPersona.add(btnEliminar);
+        
 		btnListar = new JMenuItem("Listar");
 		mnPersona.add(btnListar);
 		
@@ -67,18 +65,26 @@ public class VentanaPrincipal extends JFrame {
 		setContentPane(contentPane);
 	
 	}
-
-	public AgregarPersona getAddperson() {
-		return addperson;
-	}
-
+	
 	public ListarPersona getListperson() {
 		return listperson;
 	}
+	
+    public AgregarPersona getAddperson() {
+        return addperson;
+    }
 
 	public JMenuItem getBtnAgregar() {
 		return btnAgregar;
 	}
+	
+    public JMenuItem getBtnModificar() {
+        return btnModificar;
+    }
+
+    public JMenuItem getBtnEliminar() {
+        return btnEliminar;
+    }
 	
 	public JMenuItem getBtnListar() {
 		return btnListar;
