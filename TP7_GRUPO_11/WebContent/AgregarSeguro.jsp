@@ -27,6 +27,8 @@
 </head>
 <body>
 
+<a href="">Inicio</a><a href="AgregarSeguro.jsp">Agregar Seguro</a><a href="">Listar Seguro</a>
+
 
  <form class="form-container" method="get" action="servletSeguro">
         <div class="form-grid">
