@@ -17,5 +17,7 @@ margin: 3vw;
 
 <a href="">Inicio</a><a href="AgregarSeguro.jsp">Agregar Seguro</a><a href="">Listar Seguro</a>
 
+<h3> Soy la Pagina de inicio</h3>
+
 </body>
 </html>

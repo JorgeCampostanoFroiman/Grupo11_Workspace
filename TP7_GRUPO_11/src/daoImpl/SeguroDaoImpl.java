@@ -11,7 +11,7 @@ public class SeguroDaoImpl implements SeguroDao
 	
    
     private Connection conectar() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/segurosgrup", "root", "2495Ma3895"); 
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/segurosgrup", "root", "Mfer-1234"); 
     }
 
     @Override
