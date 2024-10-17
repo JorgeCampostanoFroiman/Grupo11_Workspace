@@ -27,14 +27,14 @@
 </head>
 <body>
 
-<a href="">Inicio</a><a href="AgregarSeguro.jsp">Agregar Seguro</a><a href="">Listar Seguro</a>
+<a href="Inicio.jsp">Inicio</a><a href="AgregarSeguro.jsp">Agregar Seguro</a><a href="ServletSeguros.jsp">Listar Seguro</a>
 
 
  <form class="form-container" method="get" action="servletSeguro">
         <div class="form-grid">
             <label for="txtId">Id Seguro</label>
            <input type="text" id="txtId" name="txtId" 
-       value="<%= request.getAttribute("obtenerUltimoID") != null ? (int)request.getAttribute("obtenerUltimoID") : "" %>" 
+       value="<%= request.getAttribute("obtenerUltimoID")!= null ? (int)request.getAttribute("obtenerUltimoID") : "" %>" 
        readonly>
         </div>
 

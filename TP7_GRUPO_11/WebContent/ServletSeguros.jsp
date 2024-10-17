@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Listado de seguros</title>
 </head>
 <body>
-<a href="">Inicio</a><a href="AgregarSeguro.jsp">Agregar Seguro</a><a href="">Listar Seguro</a>
+<a href="Inicio.jsp">Inicio</a><a href="AgregarSeguro.jsp">Agregar Seguro</a><a href="ServletSeguros.jsp">Listar Seguro</a>
 
 <h4> "Tipos de seguros de la base de datos"</h4>
 
@@ -18,8 +18,7 @@
             <label for="busquedaTipoSeguro">Busqueda por tipos de seguros</label>
             
             <select id="busquedaTipoSeguro" name="busquedaTipoSeguro" style="width: 120px; ">
-            <% 
-                    // CODIGO PARA LA LISTA DESPLEGABLE
+            <%
                    
              %>
             </select><input class="form-grid" type="submit" name="btnAceptar" value="Filtrar" style="height: 27px; ">

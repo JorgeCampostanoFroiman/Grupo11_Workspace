@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>INICIO</title>
 <style>
 a 
 {
@@ -15,7 +15,7 @@ margin: 3vw;
 </head>
 <body>
 
-<a href="">Inicio</a><a href="AgregarSeguro.jsp">Agregar Seguro</a><a href="">Listar Seguro</a>
+<a href="Inicio.jsp">Inicio</a><a href="AgregarSeguro.jsp">Agregar Seguro</a><a href="ServletSeguros.jsp">Listar Seguro</a>
 
 <h3> Soy la Pagina de inicio</h3>
 
