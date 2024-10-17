@@ -17,12 +17,13 @@ public class SeguroDaoImpl implements SeguroDao
     @Override
     public boolean Insert(Seguro seguro) {
         try (Connection conexion = conectar()) {
-            String sql = "INSERT INTO seguros (descripcion,idTipo,costoContratacion,costoAsegurado) VALUES (?,?,?)";
+            String sql = "INSERT INTO seguros (descripcion, idTipo, costoContratacion, costoAsegurado)" +
+            			 " VALUES (?, ?, ?, ?)";
             PreparedStatement preStatement = conexion.prepareStatement(sql);
             preStatement.setString(1, seguro.getDescripcion());
             preStatement.setInt(2, seguro.getTipo());
-            preStatement.setFloat(3, seguro.getCosto());
-            preStatement.setFloat(4, seguro.getCostoMaximo());
+            preStatement.setBigDecimal(3, seguro.getCosto());
+            preStatement.setBigDecimal(4, seguro.getCostoMaximo());
             return preStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -38,34 +39,31 @@ public class SeguroDaoImpl implements SeguroDao
             Statement statement = conexion.createStatement();
             ResultSet result = statement.executeQuery(sql);
             
-            if (result.next()) { // Verifica si hay un resultado
+            if (result.next()) {
                 id = result.getInt("lastId");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return id + 1; // Se le suma 1 para el nuevo ID
+        return id + 1;
     }
     
     @Override
-    public ArrayList<String> GetTypeAll()
-    {
-    	 ArrayList<String> lista = new ArrayList<>();
-         try (Connection conexion = conectar()) {
-             String sql = "SELECT descripcion FROM tiposeguro"; // Asegúrate de que estas columnas existan
-             Statement statement = conexion.createStatement();
-             ResultSet result = statement.executeQuery(sql);
-             String descripcion;
-             while (result.next()) {
-                
-                 descripcion= result.getString("descripcion"); 
-        
-                 lista.add(descripcion);
-             }
-         } catch (SQLException e) {
-             e.printStackTrace();
-         }
-         return lista;
+    public ArrayList<String> GetTypeAll() {
+        ArrayList<String> lista = new ArrayList<>();
+        try (Connection conexion = conectar()) {
+            String sql = "SELECT idTipo, descripcion FROM tipoSeguros";
+            Statement statement = conexion.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            while (result.next()) {
+                String tipo = result.getInt("idTipo") + " - " + result.getString("descripcion");
+                lista.add(tipo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lista;
     }
 
  
@@ -74,17 +72,20 @@ public class SeguroDaoImpl implements SeguroDao
     public ArrayList<Seguro> GetListAll() {
         ArrayList<Seguro> lista = new ArrayList<>();
         try (Connection conexion = conectar()) {
-            String sql = "SELECT idSeguro, descripcion, idtipo, costoContratacion, costoAsegurado FROM seguros"; 
+            String sql = "SELECT s.idSeguro, s.descripcion, ts.descripcion AS" +
+            			 " tipo, s.costoContratacion, s.costoAsegurado " +
+                         "FROM seguros s " +
+                         "JOIN tipoSeguros ts ON s.idTipo = ts.idTipo";
             Statement statement = conexion.createStatement();
             ResultSet result = statement.executeQuery(sql);
-            
+
             while (result.next()) {
                 Seguro seguro = new Seguro();
-                seguro.setId(result.getInt("idSeguro")); 
-                seguro.setDescripcion(result.getString("descripcion")); 
-                seguro.setTipo(result.getInt("idtipo")); 
-                seguro.setCosto(result.getFloat("costoContratacion")); 
-                seguro.setCostoMaximo(result.getFloat("costoAsegurado")); 
+                seguro.setId(result.getInt("idSeguro"));
+                seguro.setDescripcion(result.getString("descripcion"));
+                seguro.setTipoDescripcion(result.getString("tipo"));
+                seguro.setCosto(result.getBigDecimal("costoContratacion"));
+                seguro.setCostoMaximo(result.getBigDecimal("costoAsegurado"));
                 lista.add(seguro);
             }
         } catch (SQLException e) {
