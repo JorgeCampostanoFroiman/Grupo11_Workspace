@@ -51,7 +51,8 @@ public class servletSeguro extends HttpServlet {
 			nuevoSeguro.setCostoMaximo(costoMaximo);
 
 			if (segDao.Insert(nuevoSeguro)) {
-				response.sendRedirect("ListarSegurosServlet");
+				request.setAttribute("Exitoso", "Se agrego el seguro correctamente");
+				request.getRequestDispatcher("AgregarSeguro.jsp").forward(request, response);
 			} else {
 				request.setAttribute("error", "Error al agregar el seguro.");
 				doGet(request, response);

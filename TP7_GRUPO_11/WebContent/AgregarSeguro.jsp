@@ -1,16 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ page import="java.util.ArrayList" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="servlets.servletSeguro" %>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Agregar Seguro</title>
-<style>
+    <title>Agregar Seguro</title>
+    <style>
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 2fr;
-            gap: 10px; /
+            gap: 10px;
             align-items: center;
             margin-bottom: 15px;
         }
@@ -27,55 +26,55 @@
 </head>
 <body>
 
-<a href="Inicio.jsp">Inicio</a><a href="AgregarSeguro.jsp">Agregar Seguro</a><a href="ServletSeguros.jsp">Listar Seguro</a>
+<a href="Inicio.jsp">Inicio</a>
+<a href="servletSeguro">Agregar Seguro</a>
+<a href="ServletSeguros.jsp">Listar Seguros</a>
 
+<h1>Agregar Seguro</h1>
 
- <form class="form-container" method="post" action="servletSeguro">
-        <div class="form-grid">
-            <label for="txtId">Id Seguro</label>
-           <input type="text" id="txtId" name="txtId" 
-       value="<%= request.getAttribute("obtenerUltimoID")!= null ? (int)request.getAttribute("obtenerUltimoID") : "" %>" 
-       readonly>
-        </div>
+<% if (request.getAttribute("error") != null) { %>
+    <p style="color: red;"><%= request.getAttribute("error") %></p>
+<% } %>
 
-        <div class="form-grid">
-            <label for="txtDescripcion">Descripción</label>
-            <input type="text" id="txtDescripcion" name="txtDescripcion">
-        </div>
+<form class="form-container" method="post" action="servletSeguro">
+    <div class="form-grid">
+        <label for="txtId">Id Seguro</label>
+        <input type="text" id="txtId" name="txtId" 
+               value="<%= request.getAttribute("obtenerUltimoID") != null ?
+            		      request.getAttribute("obtenerUltimoID") : "" %>" readonly>
+    </div>
 
-        <div class="form-grid">
-            <label for="tipoSeguro">Tipo de Seguro</label>
-            
-            <select id="tipoSeguro" name="tipoSeguro">
+    <div class="form-grid">
+        <label for="txtDescripcion">DescripciÃ³n</label>
+        <input type="text" id="txtDescripcion" name="txtDescripcion">
+    </div>
+
+    <div class="form-grid">
+        <label for="tipoSeguro">Tipo de Seguro</label>
+        <select id="tipoSeguro" name="tipoSeguro">
             <% 
-                    // Obtener la lista de seguros del atributo
-                    @SuppressWarnings("unchecked")
-                    ArrayList<String> listaSeguros = (ArrayList<String>) request.getAttribute("listaSeguros");
-                    
-                    // Verificar que la lista no esté vacía
-                    if (listaSeguros != null) {
-                        for (String tiposeguro : listaSeguros) { 
-                %>
-                            <option value="<%= tiposeguro %>"><%= tiposeguro %></option>
-                <% 
-                        } 
-                    } 
-                %>
-            </select>
-        </div>
+                ArrayList<String> listaSeguros = (ArrayList<String>) request.getAttribute("listaSeguros");
+                if (listaSeguros != null) {
+                    for (String tipo : listaSeguros) {
+            %>
+                        <option value="<%= tipo.split(" - ")[0] %>"><%= tipo %></option>
+            <%      } 
+                } 
+            %>
+        </select>
+    </div>
 
-        <div class="form-grid">
-            <label for="txtCosto">Costo Contratación</label>
-            <input type="number" id="txtCosto" name="txtCosto">
-        </div>
+    <div class="form-grid">
+        <label for="txtCosto">Costo ContrataciÃ³n</label>
+        <input type="number" id="txtCosto" name="txtCosto" step="0.01">
+    </div>
 
-        <div class="form-grid">
-            <label for="txtCostoMaximo">Costo Máximo Asegurado</label>
-            <input type="number" id="txtCostoMaximo" name="txtCostoMaximo">
-        </div>
-        <div><input class="form-grid" type="submit" name="btnAceptar" value="Aceptar"></div>
-    </form>
+    <div class="form-grid">
+        <label for="txtCostoMaximo">Costo MÃ¡ximo Asegurado</label>
+        <input type="number" id="txtCostoMaximo" name="txtCostoMaximo" step="0.01">
+    </div>
 
+    <div><input class="form-grid" type="submit" name="btnAceptar" value="Aceptar"></div>
+</form>
 
 </body>
-</html>
