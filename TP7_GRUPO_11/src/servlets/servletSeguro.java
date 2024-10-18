@@ -13,44 +13,49 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 @WebServlet("/servletSeguro")
 public class servletSeguro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    SeguroDaoImpl segDao = new SeguroDaoImpl();
+	SeguroDaoImpl segDao = new SeguroDaoImpl();
 
-    public servletSeguro() {
-        super();
-    }
+	public servletSeguro() {
+		super();
+	}
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	int ultimoId = segDao.UltimoId();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int ultimoId = segDao.UltimoId();	
+		
+		ArrayList<String> listaSeguros = segDao.GetTypeAll();
 
-        ArrayList<String> listaSeguros = segDao.GetTypeAll();
+		request.setAttribute("obtenerUltimoID", ultimoId);
+		request.setAttribute("listaSeguros", listaSeguros);
 
-        request.setAttribute("obtenerUltimoID", ultimoId);
-        request.setAttribute("listaSeguros", listaSeguros);
+		request.getRequestDispatcher("AgregarSeguro.jsp").forward(request, response);
+	}
 
-        request.getRequestDispatcher("AgregarSeguro.jsp").forward(request, response);
-    }
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String descripcion = request.getParameter("txtDescripcion");
-        int tipoSeguro = Integer.parseInt(request.getParameter("tipoSeguro"));
-        BigDecimal costo = new BigDecimal(request.getParameter("txtCosto"));
-        BigDecimal costoMaximo = new BigDecimal(request.getParameter("txtCostoMaximo"));
+		if (request.getParameter("btnAceptar") != null) {
+			String descripcion = request.getParameter("txtDescripcion");
+			String id_split = request.getParameter("tipoSeguro").split("-")[0];
+			int tipoSeguro = Integer.parseInt(id_split);
+			BigDecimal costo = new BigDecimal(request.getParameter("txtCosto"));
+			BigDecimal costoMaximo = new BigDecimal(request.getParameter("txtCostoMaximo"));
 
-        Seguro nuevoSeguro = new Seguro();
-        nuevoSeguro.setDescripcion(descripcion);
-        nuevoSeguro.setTipo(tipoSeguro);
-        nuevoSeguro.setCosto(costo);
-        nuevoSeguro.setCostoMaximo(costoMaximo);
+			Seguro nuevoSeguro = new Seguro();
+			nuevoSeguro.setDescripcion(descripcion);
+			nuevoSeguro.setTipo(tipoSeguro);
+			nuevoSeguro.setCosto(costo);
+			nuevoSeguro.setCostoMaximo(costoMaximo);
 
-        if (segDao.Insert(nuevoSeguro)) {
-            response.sendRedirect("ListarSegurosServlet");
-        } else {
-            request.setAttribute("error", "Error al agregar el seguro.");
-            doGet(request, response);
-        }
-    }
+			if (segDao.Insert(nuevoSeguro)) {
+				response.sendRedirect("ListarSegurosServlet");
+			} else {
+				request.setAttribute("error", "Error al agregar el seguro.");
+				doGet(request, response);
+			}
+		}
+	}
 }

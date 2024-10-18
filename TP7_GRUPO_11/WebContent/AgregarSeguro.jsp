@@ -30,7 +30,7 @@
 <a href="Inicio.jsp">Inicio</a><a href="AgregarSeguro.jsp">Agregar Seguro</a><a href="ServletSeguros.jsp">Listar Seguro</a>
 
 
- <form class="form-container" method="get" action="servletSeguro">
+ <form class="form-container" method="post" action="servletSeguro">
         <div class="form-grid">
             <label for="txtId">Id Seguro</label>
            <input type="text" id="txtId" name="txtId" 
@@ -49,6 +49,7 @@
             <select id="tipoSeguro" name="tipoSeguro">
             <% 
                     // Obtener la lista de seguros del atributo
+                    @SuppressWarnings("unchecked")
                     ArrayList<String> listaSeguros = (ArrayList<String>) request.getAttribute("listaSeguros");
                     
                     // Verificar que la lista no esté vacía

@@ -16,7 +16,7 @@ public class SeguroDaoImpl implements SeguroDao
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/SegurosGroup", "root", "1234");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/SegurosGroup", "root", "root");
     }
 
     @Override
