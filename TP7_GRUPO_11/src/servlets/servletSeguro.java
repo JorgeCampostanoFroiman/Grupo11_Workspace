@@ -1,10 +1,12 @@
 package servlets;
+
 import entidad.Seguro;
 import daoImpl.SeguroDaoImpl;
-import java.util.ArrayList;
-
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,48 +17,40 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/servletSeguro")
 public class servletSeguro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-	
-	SeguroDaoImpl segDao = new SeguroDaoImpl();
-  
+    SeguroDaoImpl segDao = new SeguroDaoImpl();
+
     public servletSeguro() {
         super();
-
-      
     }
-    
-    
-    public class CargaComboServlet extends HttpServlet {
-        protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-                throws ServletException, IOException {
-            
-            request.setAttribute("listaSeguros", segDao.GetTypeAll());
-            request.getRequestDispatcher("AgregarSeguro.jsp").forward(request, response);
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	int ultimoId = segDao.UltimoId();
+
+        ArrayList<String> listaSeguros = segDao.GetTypeAll();
+
+        request.setAttribute("obtenerUltimoID", ultimoId);
+        request.setAttribute("listaSeguros", listaSeguros);
+
+        request.getRequestDispatcher("AgregarSeguro.jsp").forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String descripcion = request.getParameter("txtDescripcion");
+        int tipoSeguro = Integer.parseInt(request.getParameter("tipoSeguro"));
+        BigDecimal costo = new BigDecimal(request.getParameter("txtCosto"));
+        BigDecimal costoMaximo = new BigDecimal(request.getParameter("txtCostoMaximo"));
+
+        Seguro nuevoSeguro = new Seguro();
+        nuevoSeguro.setDescripcion(descripcion);
+        nuevoSeguro.setTipo(tipoSeguro);
+        nuevoSeguro.setCosto(costo);
+        nuevoSeguro.setCostoMaximo(costoMaximo);
+
+        if (segDao.Insert(nuevoSeguro)) {
+            response.sendRedirect("ListarSegurosServlet");
+        } else {
+            request.setAttribute("error", "Error al agregar el seguro.");
+            doGet(request, response);
         }
     }
-    
-   
-    public class ObtenerUltimoID extends HttpServlet
-    {
-    	 protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-                 throws ServletException, IOException {
-             
-             request.setAttribute("obtenerUltimoID", segDao.UltimoId());
-             request.getRequestDispatcher("AgregarSeguro.jsp").forward(request, response);
-         }
-    	
-    }
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
