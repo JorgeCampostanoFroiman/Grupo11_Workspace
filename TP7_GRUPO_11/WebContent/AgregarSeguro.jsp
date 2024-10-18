@@ -28,7 +28,7 @@
 
 <a href="Inicio.jsp">Inicio</a>
 <a href="servletSeguro">Agregar Seguro</a>
-<a href="ServletSeguros.jsp">Listar Seguros</a>
+<a href="ListarSegurosServlet">Listar Seguros</a>
 
 <h1>Agregar Seguro</h1>
 
